@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Native Counter</title>
+</head>
+
+<body>
+  <!-- 命令式编程 -->
+  <div id="app">
+    <h2 id="count">0</h2>
+    <button id="incrementBtn">+</button>
+    <button id="decrementBtn">-</button>
+  </div>
+
+  <script>
+    // 获取元素
+    const countEl = document.getElementById('count');
+    const incrementBtn = document.getElementById('incrementBtn');
+    const decrementBtn = document.getElementById('decrementBtn');
+
+    // 状态变量
+    let count = 0;
+
+    // 更新 DOM
+    function updateCount() {
+      countEl.textContent = count;
+    }
+
+    // 事件监听
+    incrementBtn.addEventListener('click', () => {
+      count++;
+      updateCount();
+    });
+
+    decrementBtn.addEventListener('click', () => {
+      count--;
+      updateCount();
+    });
+  </script>
+</body>
+
+</html>
