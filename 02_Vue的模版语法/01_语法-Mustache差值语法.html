@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 1.基本使用 -->
+    <h2>{{ message }}</h2>
+    <!-- 2.使用插值表达式 -->
+    <h2>{{ count * 2 }}</h2>
+    <h2>{{ infos.split(" ") }}</h2>
+    <!-- 3.三元运算符 -->
+    <h2>{{ count > 5 ? "大于" : "小于等于" }}</h2>
+    <!-- 注意这里不能定义语句 -->
+    <!-- <h2>{{ const a = 10 }}</h2> -->
+     <!-- 4.调用方法 -->
+    <h2>{{ formateDate(num) }}</h2>
+
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "Hello Vue!",
+          count: 10,
+          infos: "Vue3 插值表达式示例",
+          num: 10,
+        }
+      },
+      methods: {
+        formateDate(num) {
+          console.log(num);
+          return new Date().toLocaleString();
+        }
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

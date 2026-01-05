@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue v-once Demo</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 块级标题标签（h1~h6）不能互相嵌套，浏览器会自动修正结构，导致内部标签脱离 v-once 的作用范围。
+• 行内元素（如 <span>）可以正常嵌套在块级元素中，因此 v-once 可以作用于整个结构。 -->
+    <!-- v-once: 当前元素及其子元素只会渲染一次 -->
+    <h2 v-once>
+      {{ message }}
+      <span>{{ count }}</span>
+    </h2>
+    <button @click="updateMessage">Update Message</button>
+    <button @click="count++">Increase Count</button>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "Hello Vue!",
+          count: 100
+        };
+      },
+      methods: {
+        updateMessage() {
+          this.message = "Hello";
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

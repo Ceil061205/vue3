@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{ count }}</h2>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          count: 0,
+        }
+      },
+      methods: {
+        // 里面的函数不能用箭头函数，因为箭头函数的this指向上层作用域的this,会指向window对象，而不是vue实例。
+        increment() {
+          this.count++;
+        },
+        decrement() {
+          this.count--;
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>
