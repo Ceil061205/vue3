@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue v-once Demo</title>
+</head>
+<style>
+  [v-clock]::before {
+    display: none;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <!-- 一开始不显示{{}}以防用户看到 -->
+    <h2 v-clock>
+      {{ content }}
+    </h2>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          content: `1111111111`,
+        };
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue v-memo</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 只有当count变化其他才会变化 -->
+    <div v-memo="[count]">
+      <h1>{{count}}</h1>
+      <h1>{{count2}}</h1>
+      <h2>
+        {{ content }}
+      </h2>
+    </div>
+    <button @click="change">更新内容</button>
+    <button @click="count++">更新计数</button>
+    <button @click="count2++">更新计数2</button>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          content: `1111111111`,
+          count: 0,
+          count2: 0,
+          };
+      },
+      methods: {
+        change() {
+          this.content = `${Math.random()}`;
+        },
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

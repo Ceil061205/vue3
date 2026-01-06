@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue v-memo</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 直接全部绑定了 常用组件传参 -->
+    <h2 v-bind="infos">hh</h2>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+            infos: { name: "title" , value: "hhhh" }
+          };
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

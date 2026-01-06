@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue v-memo</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="imgUrl = '../img/2.png'">切换图片</button>
+    <img :src="imgUrl" alt="">
+    <a :href="href">baidu</a>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+            imgUrl: "../img/1.png",
+            href: "https://www.baidu.com",
+          };
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

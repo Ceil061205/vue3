@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue v-once Demo</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>
+      {{ message }}
+      <!-- 内容会被替换 -->
+      <span v-text="message"></span>
+    </h2>
+    <button @click="updateMessage">Update Message</button>
+    <button @click="count++">Increase Count</button>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "Hello Vue!",
+          count: 100
+        };
+      },
+      methods: {
+        updateMessage() {
+          this.message = "Hello";
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

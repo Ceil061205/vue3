@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue v-memo</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 跟上对象类型 -->
+    <h2 :style="{ color: fontColor, fontSize: '30px', 'font-size': fontSize + 'px' }">112</h2>
+    <!-- 跟上数组类型 -->
+     <h2 :style="[styleObject, {}]">112</h2>
+    <!-- 跟上对象类型 -->
+     <h2 :style="styleObject">112</h2>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+            fontColor: 'aquamarine',
+            fontSize: 30,
+            // 跟上对象类型
+            styleObject: {
+                color: 'aquamarine',
+                fontSize: '30px'
+            },
+          };
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

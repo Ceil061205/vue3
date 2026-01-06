@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue v-memo</title>
+</head>
+
+<body>
+  <div id="app">
+    <button :class="isActive ? 'active': ''" @click="isActive = !isActive">111</button>
+    <!-- 对象写法 -->
+    <button :class="{active: isActive}" @click="isActive = !isActive">111</button>
+    <!-- 可以写多个值可以和普通class一起用 -->
+    <button class="a" :class="{active: isActive, why: true, xyz: false}" @click="isActive = !isActive">111</button>
+    <!-- 也可以用函数 -->
+
+    <!-- 数组 -->
+     <button :class="[isActive ? 'active' : '', 'b']" @click="isActive = !isActive">111</button>
+    <!-- 数组写法可以和对象一起用 -->
+     <button class="a" :class="[{active: isActive}, {why: true, xyz: false}]" @click="isActive = !isActive">111</button>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+            isActive: false, 
+          };
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>
