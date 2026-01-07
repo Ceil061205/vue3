@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+    
+  </style>
+
+<body>
+  <div id="app">
+    <div class="box" v-on:click="changeColor"></div>
+    <div @click="count++">{{count}}</div>
+    <hr>
+    <div class="box" @mousemove="changeColor"></div>
+    <hr>
+    <!-- 绑定多个事件 -->
+     <div class="box" v-on="{ click: changeColor, mousemove: changeColor }"></div>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "Hello Vue!",
+          count: 0,
+        }
+      },
+      methods: {
+        changeColor() {
+          console.log('click');
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

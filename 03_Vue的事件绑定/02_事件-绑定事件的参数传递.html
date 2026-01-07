@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+    
+  </style>
+
+<body>
+  <div id="app">
+    <!-- 默认传入event对象 -->
+    <div class="box" v-on:click="changeColor()"></div>
+    <hr>
+    <div class="box" v-on:click="change(111, message)"></div>
+    <hr>
+    <!-- 既有event又有自己的参数 -->
+    <div class="box" v-on:click="change2(message, $event)"></div>
+    <hr>
+  
+
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "Hello Vue!",
+          count: 0,
+        }
+      },
+      methods: {
+        changeColor(event) {
+          console.log('click', event.target);
+        },
+        change(num, msg) {
+          console.log('click', num, msg);
+        },
+        change2(msg) {
+          console.log('click', msg, event);
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>
