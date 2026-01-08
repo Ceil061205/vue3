@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 
+  频繁渲染用v-show
+  show和if区别: v-show指令是用来根据条件展示元素，而 v-if是根据条件渲染元素。 
+               v-show是通过改变元素的display(noe block)属性来控制元素是否显示，而 v-if则是根据条件判断是否创建或销毁DOM节点。
+  -->
+<body>
+  <!-- v-show不支持template,template这个元素是不存在的所所以不能用  -->
+  <div id="app">
+    <button @click="isShow = !isShow">切换</button>
+    <div v-show="isShow">
+      <img src="../img/1.png" alt="">
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          isShow: true,
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

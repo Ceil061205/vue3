@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>My favorite movies</h1>
+    <ul>
+      <li v-for="(value, key, index) in infos">
+        {{ key }}: {{ value }}: {{ index }}
+      </li>
+      <!-- 遍历数字 -->
+        <li v-for="n in 10">{{ n }}</li>
+      <!-- 遍历字符串 -->
+        <li v-for="letter in 'abc'">
+          {{ letter }}
+        </li>
+    </ul>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          infos: { 
+            name: "John",
+            age: 30,
+            hobbies: ["football", "chess"]
+           }
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

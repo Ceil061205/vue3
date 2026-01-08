@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 数组更新的检测 -->
+    <h1>My favorite movies</h1>
+    <ul>
+      <!-- 也支持for of -->
+      <li v-for="movie in movies">{{ movie }}</li>
+    </ul>
+    <button @click="addMovie">chnageMovie</button>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          movies: [ "Batman Begins", "The Dark Knight" ],
+        }
+      },
+      methods: {
+        addMovie() {
+          // this.movies = [ "Batman Returns" ]
+          this.movies[0] = "Batman Returns";
+          // 都可以修改原数组
+          // this.movies.push("Batman Returns");
+          // this.movies.pop();
+          // this.movies.shift();
+          // this.movies.unshift("Batman Begins");
+          // this.movies.splice(1, 1);
+          // this.movies.reverse();
+          // this.movies.sort();
+
+          // 不修改原素组的方法是不能监听的,需要重新赋值
+          const newMovies = this.movies.map(movie => movie + "!!!");
+          this.movies = newMovies;
+        },
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

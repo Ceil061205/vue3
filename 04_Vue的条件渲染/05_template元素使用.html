@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 用template元素包裹不会渲染 -->
+    <template v-if="message.length > 0">
+      <ul>
+        <li v-for="item in message">{{item}}</li>
+      </ul>
+    </template>
+    <template v-else>
+      <p>暂无数据</p>
+    </template>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: ""
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

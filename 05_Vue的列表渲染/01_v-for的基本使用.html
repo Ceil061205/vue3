@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>My favorite movies</h1>
+    <ul>
+      <li v-for="(movie, index) in movies">{{ index + 1 }}-{{ movie }}</li>
+      <li v-for="(toy, index) in toys">{{ toy.name }} ({{ toy.year }})</li>
+    </ul>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          movies: [ "Batman Begins", "The Dark Knight" ],
+          toys: [
+            { name: "Batman Begins", year: 2005 },
+            { name: "The Dark Knight", year: 2008 }
+          ]
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>
