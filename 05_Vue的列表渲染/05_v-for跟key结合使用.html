@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="insertF">插入f</button>
+    <ul>
+      <!-- :是因为要保证key不一样一般用id key的目的是为了复用原来有的节点 -->
+      <!-- vue在有key和没有key执行的算法不同 -->
+      <li v-for="movie in movies" :key="movie">{{ movie }}</li>
+    </ul>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          movies: [ "Batman Begins", "The Dark Knight" ],
+        }
+      },
+      methods: {
+        insertF() {
+          this.movies.splice(1, 0, "The Dark Knight Rises");
+        },
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

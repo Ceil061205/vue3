@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+  computed和methods区别:
+    computed是基于它们的依赖进行缓存的，只有在相关依赖发生改变时才会重新计算。
+    methods调用时，无论依赖是否改变都会重新执行。
+    computed更适合用于复杂数据计算属性，而methods适合于执行操作。
+  -->
+  <div id="app">
+    <h2>{{ fullName }}</h2><h2>{{ fullName }}</h2>
+    <p>{{ scoreLevel }}</p>
+    <!-- methods用几次就执行几次 -->
+    <p>{{ full() }}</p><p>{{ full() }}</p>
+    <button @click="change">修改lastname</button>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "Hello Vue!",
+          firstName: "John",
+          lastName: "Doe",
+          score: 60,
+        }
+      },
+      methods: {
+        full() {
+          console.log('methods');
+          return this.firstName + " " + this.lastName;
+        },
+        change() {
+          this.lastName = "Smith";
+        }
+      },
+      computed: {
+        fullName() {
+          console.log('computed');
+          return this.firstName + " " + this.lastName;
+        },
+        scoreLevel() {
+          return this.score >= 60 ? "Pass" : "Fail";
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

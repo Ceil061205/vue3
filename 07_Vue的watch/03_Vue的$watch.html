@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{ message }}</h2>
+    <button @click="change">Change Message</button>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "Hello Vue!",
+        }
+      },
+      methods: {
+        change() {
+          this.message = "Hello Vue 3!";
+        }
+      },
+      // 生命周期
+      // 一般在这个钩子中进行网络请求
+      created() {
+        this.$watch("message", (newVal, oldVal) => {
+          console.log(`Message changed from ${oldVal} to ${newVal}`);
+        },{ immediate: true , deep: true });
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

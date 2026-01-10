@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{ fullName }}</h2>
+    <button @click="setFull">设置</button>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "Hello Vue!",
+          firstName: "John",
+          lastName: "Doe",
+          score: 60,
+        }
+      },
+      // 完整的计算属性写法
+      computed: {
+        fullName: {
+          get: function () {
+            return this.firstName + " " + this.lastName;
+          },
+          set: function (value) {
+            const names = value.split(" ");
+            this.firstName = names[0];
+            this.lastName = names[1];
+          }
+        }
+      },
+      methods: {
+        setFull() {
+          this.fullName = "xyz Smith";
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

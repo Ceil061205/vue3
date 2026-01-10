@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{ message }}</h2>
+    <p>{{ info.age }}</p>
+    <button @click="change">Change Message</button>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "Hello Vue!",
+          info: {
+            name: "John",
+            age: 30,
+            hobbies: ["Reading", "Coding"]
+          }
+        }
+      },
+      methods: {
+        change() {
+          this.message = "Message changed!";
+          this.info = { age: 20 };
+        }
+      },
+      watch: {
+        message(newVal, oldVal) {
+          console.log(`Message changed from ${oldVal} to ${newVal}`);
+        },
+        info(newVal, oldVal) {
+          // 如果是对象类型,拿到的是代理对象
+          // console.log(newVal);
+          // console.log(`Info changed from ${oldVal.age} to ${newVal.age}`);
+
+          // console.log({...newVal});
+
+          // 如果要拿到原始对象,可以使用Vue.toRaw()方法
+          console.log(Vue.toRaw(newVal));
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

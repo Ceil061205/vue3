@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{ fullName }}</h2>
+    <p>{{ scoreLevel }}</p>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "Hello Vue!",
+          firstName: "John",
+          lastName: "Doe",
+          score: 60,
+        }
+      },
+      computed: {
+        fullName() {
+          return this.firstName + " " + this.lastName;
+        },
+        scoreLevel() {
+          return this.score >= 60 ? "Pass" : "Fail";
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>
