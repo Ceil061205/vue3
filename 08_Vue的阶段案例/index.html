@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      text-align: center;
+    }
+    th, td {
+      border: 1px solid rgb(174, 170, 170);
+      padding: 8px;
+    }
+    .active {
+      background-color: rgb(14, 120, 212);
+    } 
+  </style>
+
+</head>
+
+<body>
+  <!-- 引入的数据就是全局作用域 -->
+  <script src="./data/data.js"></script>
+  <div id="app">
+    <template v-if="books.length">
+      <table>
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>书籍名称</th>
+            <th>出版日期</th>
+            <th>价格</th>
+            <th>购买数量</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in books" :key="item.id" @click="rowClick(index)" :class="{active : index === activeIndex}">
+            <td>{{ index + 1 }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ formatPrice(item.price) }}</td>
+            <td>
+              <button :disabled="item.count <= 1" @click="decrement(index, item)">-</button>
+              {{ item.count }}
+              <button @click="increment(index, item)">+</button>
+            </td>
+            <td><button @click="deleteBook(index, item)">删除</button></td>
+          </tr>
+      </table>
+      <h2>总价: {{ formatPrice(totalPrice) }}</h2>
+    </template>
+    <template v-else>
+      <h2>暂无书籍</h2>
+    </template>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          books: books,
+          activeIndex: -1
+        }
+      },
+      methods: {
+        deleteBook(index, item) {
+          // this.books = this.books.filter((item) => item.id !== id);
+          this.books.splice(index, 1);
+        },
+        formatPrice(price) {
+          return '$' + price;
+        },
+        decrement(index, item) {
+          // this.books[index].count--;
+          item.count--;
+        },
+        increment(index, item) {
+          // this.books[index].count++;
+          item.count++;
+        },
+        rowClick(index) {
+          this.activeIndex = index;
+        }
+      },
+      computed: {
+        totalPrice() {
+          return this.books.reduce((pre, item) => pre + item.price * item.count, 0);
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

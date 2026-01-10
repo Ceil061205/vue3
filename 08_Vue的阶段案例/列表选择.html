@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1>My favorite movies</h1>
+    <ul>
+      <li :class="{active: index === activeIndex }" @click="liClick(index)" v-for="(movie, index) in movies">{{ movie }}</li>
+    </ul>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          movies: ['The Shawshank Redemption', 'The Godfather', 'The Dark Knight'],
+          activeIndex: -1
+        }
+      },
+      methods: {
+        liClick(index) {
+          this.activeIndex = index;
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+</html>

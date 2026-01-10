@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 1.lazy: 只有在提交(回车) 失去焦点才会触发-->
+     <input type="text" v-model.lazy="message">
+     <hr>
+     <!-- 2.trim: 自动过滤首尾空格-->
+      trim
+      <input type="text" v-model.trim="message">
+      <hr>
+      <!-- 3.number: 自动将输入的字符串转为数值类型 type本身是number就可以不用这个修饰符-->
+       <input type="text" v-model.number="number">
+       <hr>
+     <!-- 4.修饰符可以串联使用-->
+      <input type="text" v-model.lazy.trim="message">
+    <h2>{{ message }}</h2>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: " Hello Vue! ",
+          number: "123"
+        }
+      }
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

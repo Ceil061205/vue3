@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>多选</h2>
+    <!-- size是展出的高度 -->
+    <select v-model="genders" multiple size="2">
+      <option v-for="item in gender" :value="item.value">{{ item.text }}</option>
+    </select>
+    <p>Selected: {{ genders }}</p>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          gender: [
+            {value: 'male', text: '男'},
+            {value: 'female', text: '女'},
+            {value: 'other', text: '其他'},
+          ],
+          genders: []
+        }
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 单选框: v-model是boolean -->
+    <label for="agree">
+      <input id="agree" type="checkbox" v-model="isAgree"> 同意协议
+    </label>
+    <p>isAgree: {{ isAgree }}</p>
+
+    <!-- 多选框: 绑定数组,input必须有value,有了v-model所以可以省略name -->
+    <div class="hobbies">
+      <label for="hob1">
+        <input id="hob1" type="checkbox" v-model="hobbies" value="hob1"> hob1
+      </label>
+      <label for="hob2">
+        <input id="hob2" type="checkbox" v-model="hobbies" value="hob2"> hob2
+      </label>
+    </div>
+    <p>hobbies: {{ hobbies }}</p>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          isAgree: false,
+          hobbies: [],
+        }
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

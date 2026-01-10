@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <product-price></product-price><product-price></product-price>
+  </div>
+  <template id="item">
+    <div>价格：{{ price }}</div>
+  </template>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    // App组件
+    const App = {};
+
+    const product = {
+      template: '#item',
+      data() {
+        return {
+          price: 100,
+        }
+      }
+    }
+
+    const app = Vue.createApp(App);
+
+    app.component("product-price", product);
+
+    app.mount("#app");
+  </script>
+</body>
+
+</html>
